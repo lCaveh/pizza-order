@@ -6,9 +6,74 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/scripts.js"></script>
     <title>Order Pizza</title>
-    <title></title>
   </head>
   <body>
+    <!-- Cheese Pizza,made with classic marinara sauce topped with mozzarella cheese
+    Pepperoni Pizza,complete with mozzarella cheese and pepperoni
+    Meat Lover's Pizza,packed with pepperoni, Italian sausage, ham, bacon, season pork and beef
+    Supreme Pizza,including pepperoni, seasoned pork, beef, mushrooms, green bell peppers and red onions
+
+    add extra cheese
+    add olives
+    add more mushrooms
+    add tomatoes -->
+    <div class="container">
+      <h1>Happy Pizza</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <hr>
+          <h2>Order your pizza</h2>
+          <form id="main-pizza">
+            <div class="form-group">
+              <label for="new-pizza">Select one of our pizza types :</label>
+              <select class="form-control" id="main-pizza">
+                <option value='cheese'>Cheese Pizza, prices: $7/$8/$10</option>
+                <option value='pepperoni'>Pepperoni Pizza,prices: $9/$10/$12</option>
+                <option value='meatlover'>Meat Lover's Pizza, prices: $10/$12/$15</option>
+                <option value='supreme'>Supreme Pizza, prices: $10/$12/$15</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="new-size">Add topping</label>
+              <select class="form-control" id="new-size">
+                <option value='small'>Small</option>
+                <option value='medium'>Medium</option>
+                <option value='large'>Large</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="new-topping">add topping if you want: </label>
+              <select class="form-control" id="new-topping">
+                <option value='tnothing'>Nothing</option>
+                <option value='tcheese'>Extra cheese</option>
+                <option value='tolive'>Olives</option>
+                <option value='tmushroom'>More mushrooms</option>
+                <option value='ttomato'>Tomatoes</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-primary">Add to your order</button>
+          </form>
+          <<hr>
+          <h2>Ticket:</h2>
+          <ul id="Order">
+          </ul>
+          <p class="ticket-price">
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div id="show-pizza">
+            <p>Pizza: <span class="pizza"></span></p>
+            <p>Size: <span class="size"></span></p>
+            <p>Topping: <span class="topping"></span></p>
+            <p>This item Price: <span class="price"></span></p>
+
+            <div id="buttons">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>
