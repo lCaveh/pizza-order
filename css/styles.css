@@ -1,0 +1,61 @@
+#show-pizza {
+  display: none;
+}
+#footer {
+  display: none;
+}
+h1 {
+  font-size: 4vw;
+}
+h2 {
+  font-size: 3vw;
+}
+h3 {
+  font-size: 2vw;
+}
+.header {
+  font-family: monospace;
+  font-weight: 600;
+  color: darkred;
+  background-image: url("../img/pizza.jpg");
+  background-size: cover;
+  height: 25%;
+}
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.frame {
+  border-style: groove;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.item {
+  float: left;
+  width: 25%;
+}
+.item:hover {
+  cursor: pointer;
+}
+.cheese {
+  background-image: url("../img/cheesepizza.jpg");
+  background-size: cover;
+}
+.meat {
+  background-image: url("../img/meatpizza.jpg");
+  background-size: cover;
+}
+.pepperoni {
+  background-image: url("../img/pepperonipizza.jpg");
+  background-size: cover;
+}
+.supreme {
+  background-image: url("../img/supremepizza.jpg");
+  background-size: cover;
+}
+.pizza-img {
+  width: 100%;
+}
+button {
+  margin-bottom: 10px;
+}

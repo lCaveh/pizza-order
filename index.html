@@ -17,11 +17,42 @@
     add olives
     add more mushrooms
     add tomatoes -->
+
     <div class="container">
-      <h1>Happy Pizza</h1>
       <div class="row">
-        <div class="col-md-6">
-          <hr>
+        <div class="col-md-12 header">
+          <div id="Header">
+            <h1>Happy Pizza</h1>
+            <h2>The best pizza in seattle</h2>
+            <h2>Order now</h2>
+          </div>
+        </div>
+        <div class="col-md-12 frame">
+          <div class="item cheese">
+            <h3>Cheese Pizza</h3>
+            <br><br><br><br>
+          </div>
+          <div class="item pepperoni">
+            <h3>Pepperoni Pizza</h3>
+            <br><br><br><br>
+          </div>
+          <div class="item meat">
+            <h3>Meat Lover's Pizza</h3>
+            <br><br><br><br>
+          </div>
+          <div class="item supreme">
+            <h3>Supreme Pizza</h3>
+            <br><br><br><br>
+          </div>
+        </div>
+        <div class="col-md-12 frame">
+          <div id="description">
+            <img class="pizza-img" src="img/cheesepizza.jpg" alt="Cheese">
+            <h2>Description :</h2>
+            <p class="pizza-description">Cheese Pizza: made with classic marinara sauce topped with mozzarella cheese</h2>
+          </div>
+        </div>
+        <div class="col-md-6 frame">
           <h2>Order your pizza</h2>
           <form id="new-pizza">
             <div class="form-group">
@@ -42,26 +73,24 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="new-topping">add topping if you want: </label>
-              <select class="form-control" id="new-topping">
-                <option value='tnothing'>Nothing</option>
-                <option value='tcheese'>Extra cheese</option>
-                <option value='tolive'>Olives</option>
-                <option value='tmushroom'>More mushrooms</option>
-                <option value='ttomato'>Tomatoes</option>
-              </select>
+              <p>add topping if you want: </p>
+              <input type="checkbox" name="new-topping" value="cheese">Extra cheese<br>
+              <input type="checkbox" name="new-topping" value="olive">Olives<br>
+              <input type="checkbox" name="new-topping" value="mushroom">More mushrooms<br>
+              <input type="checkbox" name="new-topping" value="tomato">Tomatoes<br>
             </div>
             <button type="submit" class="btn-primary">Add to your order</button>
           </form>
-          <<hr>
+          <br>
+
+        </div>
+        <div class="col-md-6 frame">
           <h2>Your order:</h2>
           <ul id="order">
           </ul>
-          <p class="pizza-price">
-          </p>
-        </div>
-        <div class="col-md-6">
+
           <div id="show-pizza">
+            <h2>This item :</h2>
             <p>Pizza: <span class="pizzaType"></span></p>
             <p>Size: <span class="size"></span></p>
             <p>Topping: <span class="topping"></span></p>
@@ -72,8 +101,18 @@
 
           </div>
         </div>
+        <div class="col-md-12 frame">
+          <div id="footer">
+            <h2>Please Submit Your order</h2>
+            <p class="pizza-price"></p>
+            <p class="tax"></p>
+            <p class="total-price"></p>
+            <button type="button" class="btn-primary delivery">Submit Order</button>
+            <h3 class="delivery-text"></h3>
+            <br>
+          </div>
+        </div>
       </div>
     </div>
-
   </body>
 </html>

@@ -5,15 +5,11 @@ function AllPizzas() {
 }
 
 AllPizzas.prototype.addPizza = function(pizza) {
-  pizza.id = this.assignId();
+  this.currentId++;
+  pizza.id = this.currentId;
   this.pizzas.push(pizza);
   this.price += pizza.price;
   return this.price;
-}
-
-AllPizzas.prototype.assignId = function() {
-  this.currentId += 1;
-  return this.currentId;
 }
 
 AllPizzas.prototype.findPizza = function(id) {
@@ -38,7 +34,6 @@ AllPizzas.prototype.deletePizza = function(id) {
   };
 }
 
-// Business Logic for Contacts ---------
 function Pizza(myPizza, mySize, myTopping) {
   this.pizzaType = myPizza,
   this.size = mySize,
@@ -48,29 +43,22 @@ function Pizza(myPizza, mySize, myTopping) {
 Pizza.prototype.pizzaPrice = function() {
   var pizzas = ['cheese','pepperoni','meatlover','supreme'];
   var sizes = ['small','medium','large'];
-  var toppings = ['tnothing','tcheese','tolive','tmushroom','ttomato'];
   var prices= [7,8,10,9,10,12,10,12,15,10,12,15];
-  var tprices= [0,1,2,2,1];
-  for (i=0;i<pizzas.length;i++){
-    for (j=0;j<sizes.length;j++){
+  for (var i=0; i<pizzas.length; i++){
+    for (var j=0; j<sizes.length; j++){
       if (this.pizzaType===pizzas[i] && this.size===sizes[j]) {
         this.price= prices[i*3+j];
       };
     };
   };
-  toppings.forEach(function(topping,tindex){
-    if (this.topping ===topping) {
-      this.price +=tprices[tindex];
-    };
-  });
+  this.price+=this.topping.length;
   return this.price;
-};
+}
 
-
-// User Interface Logic ---------
 var allPizzas = new AllPizzas();
 
 function showCurrentPizza(allPizzas) {
+  $("#footer").show();
   var pizzaList = $("ul#order");
   var orderItem = "";
   allPizzas.pizzas.forEach(function(pizza) {
@@ -86,41 +74,59 @@ function showPizza(pizzaId) {
   $(".size").html(pizza.size);
   $(".topping").html(pizza.topping);
   $(".price").html(pizza.price);
-
-  var buttons = $("#buttons");
-  buttons.empty();
-  buttons.append("<button class='deleteButton' id=" +  + pizza.id + ">Delete</button>");
+  $("#buttons").empty();
+  $("#buttons").append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
 }
-
-
-function addListeners() {
+function addMenuListeners (){
+  var items= ['cheese','pepperoni','meat','supreme'];
+  var descriptions=["Cheese Pizza: Made with classic marinara sauce topped with mozzarella cheese",
+  "Pepperoni Pizza: Complete with mozzarella cheese and pepperoni",
+  "Meat Lover's Pizza: Packed with pepperoni, Italian sausage, ham, bacon, season pork and beef",
+  "Supreme Pizza: Including pepperoni, seasoned pork, beef, mushrooms, green bell peppers and red onions"]
+  items.forEach(function(item, index){
+    $('.'+item).click(function(){
+      $(".pizza-img").attr("src","./img/"+item+"pizza.jpg");
+      $(".pizza-description").text(descriptions[index])
+    })
+  });
+}
+function addItemListeners() {
   $("ul#order").on("click", "li", function() {
     showPizza(this.id);
-    console.log(this);
   });
   $("#buttons").on("click", ".deleteButton", function() {
     allPizzas.deletePizza(this.id);
-    $(".pizza-price").text("The total price :"+allPizzas.price);
+    $(".pizza-price").text("The price : $"+allPizzas.price);
+    $(".tax").text("Tax: $"+(allPizzas.price*0.1).toFixed(1));
+    $(".total-price").text("The total price : $"+(allPizzas.price*1.1).toFixed(1));
     $("#show-pizza").hide();
     showCurrentPizza(allPizzas);
   });
+  $('.delivery').click(function(){
+    var address= prompt("Please Enter your address to delivery your order");
+    $('.delivery-text').text("your order will be send to :"+address+". in 30 minute.")
+  });
+
 };
 
-
 $(document).ready(function() {
-  addListeners();
+  addMenuListeners();
+  addItemListeners();
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
     var myPizza= $("#new-pizzaType").val();
     var mySize = $("#new-size").val();
-    var myTopping = $("#new-topping").val();
+    var myTopping = [];
+    $("input:checkbox[name=new-topping]:checked").each(function(){
+      myTopping.push($(this).val());
+      $(this).prop('checked',false);
+    });
     var newPizza = new Pizza(myPizza, mySize, myTopping);
     newPizza.pizzaPrice();
     allPizzas.addPizza(newPizza);
     $(".pizza-price").text("The total price :"+allPizzas.price);
+    $(".tax").text("Tax: $"+(allPizzas.price*0.1).toFixed(1));
+    $(".total-price").text("The total price : $"+(allPizzas.price*1.1).toFixed(1));
     showCurrentPizza(allPizzas);
-    console.log(newPizza);
-    console.log(allPizzas);
-
-  })
-})
+  });
+});
