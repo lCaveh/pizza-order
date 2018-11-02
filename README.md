@@ -22,7 +22,7 @@ _Contact Kaveh Saleminejad - lcaveh@gmail.com._
 
 ## GitHub page's links
 
-[My project's link](https://lcaveh.github.io/pizza-order/)
+[My project's link](https://lcaveh.github.io/pizza-order/index.html)
 
 ## Technologies Used
 
