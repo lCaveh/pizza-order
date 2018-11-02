@@ -1,9 +1,10 @@
+// A cunstractor to keep all pizzas.
 function AllPizzas() {
   this.pizzas = [],
   this.currentId = 0
   this.price= 0;
 }
-
+//This prototype will add pizzas to AllPizza object.
 AllPizzas.prototype.addPizza = function(pizza) {
   this.currentId++;
   pizza.id = this.currentId;
@@ -11,7 +12,7 @@ AllPizzas.prototype.addPizza = function(pizza) {
   this.price += pizza.price;
   return this.price;
 }
-
+//this prototype will find pizzas.
 AllPizzas.prototype.findPizza = function(id) {
   for (var i=0; i< this.pizzas.length; i++) {
     if (this.pizzas[i]) {
@@ -22,7 +23,7 @@ AllPizzas.prototype.findPizza = function(id) {
   };
   return false;
 }
-
+// This prototype wil delete pizzas by using it's id.
 AllPizzas.prototype.deletePizza = function(id) {
   for (var i=0; i< this.pizzas.length; i++) {
     if (this.pizzas[i]) {
@@ -33,13 +34,14 @@ AllPizzas.prototype.deletePizza = function(id) {
     }
   };
 }
-
+// This Constructor will create a pizza.
 function Pizza(myPizza, mySize, myTopping) {
   this.pizzaType = myPizza,
   this.size = mySize,
   this.topping = myTopping,
   this.price =0
 }
+// this one calculates the price of order
 Pizza.prototype.pizzaPrice = function() {
   var pizzas = ['cheese','pepperoni','meatlover','supreme'];
   var sizes = ['small','medium','large'];
@@ -54,9 +56,9 @@ Pizza.prototype.pizzaPrice = function() {
   this.price+=this.topping.length;
   return this.price;
 }
-
+// create an object to keep all pizzas
 var allPizzas = new AllPizzas();
-
+//it will add some li tags to ul one to show the items in order
 function showCurrentPizza(allPizzas) {
   $("#footer").show();
   var pizzaList = $("ul#order");
@@ -66,7 +68,7 @@ function showCurrentPizza(allPizzas) {
   });
   pizzaList.html(orderItem);
 };
-
+// it will show the detail of each pizza
 function showPizza(pizzaId) {
   var pizza = allPizzas.findPizza(pizzaId);
   $("#show-pizza").show();
@@ -77,6 +79,7 @@ function showPizza(pizzaId) {
   $("#buttons").empty();
   $("#buttons").append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
 }
+//this one add some event handler to menu items
 function addMenuListeners (){
   var items= ['cheese','pepperoni','meat','supreme'];
   var descriptions=["Cheese Pizza: Made with classic marinara sauce topped with mozzarella cheese",
@@ -90,6 +93,7 @@ function addMenuListeners (){
     })
   });
 }
+// this will add some event handler to all items in order
 function addItemListeners() {
   $("ul#order").on("click", "li", function() {
     showPizza(this.id);
@@ -108,7 +112,7 @@ function addItemListeners() {
   });
 
 };
-
+//main program
 $(document).ready(function() {
   addMenuListeners();
   addItemListeners();
