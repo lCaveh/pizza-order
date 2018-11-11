@@ -1,8 +1,8 @@
 // A cunstractor to keep all pizzas.
 function AllPizzas() {
   this.pizzas = [],
-  this.currentId = 0
-  this.price= 0;
+  this.currentId = 0,
+  this.price= 0
 }
 //This prototype will add pizzas to AllPizza object.
 AllPizzas.prototype.addPizza = function(pizza) {
@@ -11,7 +11,7 @@ AllPizzas.prototype.addPizza = function(pizza) {
   this.pizzas.push(pizza);
   this.price += pizza.price;
   return this.price;
-}
+};
 //this prototype will find pizzas.
 AllPizzas.prototype.findPizza = function(id) {
   for (var i=0; i< this.pizzas.length; i++) {
@@ -20,9 +20,9 @@ AllPizzas.prototype.findPizza = function(id) {
         return this.pizzas[i];
       }
     }
-  };
+  }
   return false;
-}
+};
 // This prototype wil delete pizzas by using it's id.
 AllPizzas.prototype.deletePizza = function(id) {
   for (var i=0; i< this.pizzas.length; i++) {
@@ -32,15 +32,15 @@ AllPizzas.prototype.deletePizza = function(id) {
         delete this.pizzas[i];
       }
     }
-  };
-}
+  }
+};
 // This Constructor will create a pizza.
 function Pizza(myPizza, mySize, myTopping) {
   this.pizzaType = myPizza,
   this.size = mySize,
   this.topping = myTopping,
   this.price =0
-}
+};
 // this one calculates the price of order
 Pizza.prototype.pizzaPrice = function() {
   var pizzas = ['cheese','pepperoni','meatlover','supreme'];
@@ -50,12 +50,12 @@ Pizza.prototype.pizzaPrice = function() {
     for (var j=0; j<sizes.length; j++){
       if (this.pizzaType===pizzas[i] && this.size===sizes[j]) {
         this.price= prices[i*3+j];
-      };
-    };
-  };
+      }
+    }
+  }
   this.price+=this.topping.length;
   return this.price;
-}
+};
 // create an object to keep all pizzas
 var allPizzas = new AllPizzas();
 //it will add some li tags to ul one to show the items in order

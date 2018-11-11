@@ -6,8 +6,19 @@
 
 ## Description
 
-_A single page for a pizza shop. It shows the pizza shop's menu, and the user can click to item's pictures to see their description. Then the costumers can select pizzas, their sizes, and its toppings. They also have option to delete pizzas from their order. After submitting the order the website ask for address to delivery items. I created to objects for keeping each pizza and all of them in this program._
+_This website allows the clients to create their own pizza by choosing its type, size, and toppings. They also are able to check all pizza's ingredients, description, and picture by clicking on them in the menu section. After choosing all pizzas and making order the website will calculate total price of order and show the receipt to client. In last step, it will get an address for delivery to make all happy._
 
+## Specifications
+
+_The user can click the menu section to get pizza picture and its ingredient_
+
+_The user can select one of four pizza types, one of three pizza sizes, and any topping_
+
+_The user can add as many pizza as he/she wants to his/her order and check their detail by clicking on their name_
+
+_The website will calculate the total amount including 10% tax and show the receipt_  
+
+_The user is able to delete a pizza if he/she select it wrongly or changed his/her mind_
 
 ## Setup/Installation Requirements
 
